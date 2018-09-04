@@ -12,4 +12,6 @@ export class AppComponent {
     this.cart.push(lineItem);
     console.log("cart = ", this.cart);
   }
+
+  //test
 }
