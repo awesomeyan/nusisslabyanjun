@@ -11,6 +11,9 @@ export class AppComponent {
   processLineItem(lineItem:LineItem){
     this.cart.push(lineItem);
     console.log("cart = ", this.cart);
+
+
+    
   }
 
   //test

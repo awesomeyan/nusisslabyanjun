@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">  
+  <img src="assets/address-book-icon.png" class="logo">
+  My Address
+  </mat-toolbar>
+<app-address-entry (newAddress)="processAddress($event)">
+
+</app-address-entry>
+
+
+<mat-tab-group (selectedTabChange)="loadAddress($event)">
+  <mat-tab *ngFor="let t of tabs" [label]="t.label" >Some Content here</mat-tab>
+</mat-tab-group>
