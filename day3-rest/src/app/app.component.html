@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">Giphy</mat-toolbar>
+
+
+<form action="" fxLayout="row column" fxLayoutAlign="space-between center" #searchForm="ngForm" (ngSubmit)="search()">
+  <mat-form-field fxLayoutAlign="stretch">
+    <input type="text" name="searchTerm" placeHolder="What is that you seek" required ngModel matInput id="">
+  </mat-form-field>
+
+  <button type="submit">
+    <mat-icon mat-raised-button color="accent" [disabled]="searchForm.invalid">search</mat-icon>
+  </button>
+</form>

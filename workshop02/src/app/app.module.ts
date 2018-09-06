@@ -7,11 +7,13 @@ import {FormsModule} from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { AddressEntryComponent } from './components/address-entry.component';
 import {AddressService} from './address.service';
+import { AddressListComponent } from './components/address-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddressEntryComponent
+    AddressEntryComponent,
+    AddressListComponent
   ],
   imports: [
     BrowserModule,

@@ -10,3 +10,10 @@
 <mat-tab-group (selectedTabChange)="loadAddress($event)">
   <mat-tab *ngFor="let t of tabs" [label]="t.label" >Some Content here</mat-tab>
 </mat-tab-group>
+
+<app-address-list [addresses]=addressList></app-address-list>
+<ul>
+    <li *ngFor="let add of addressList">
+      {{ add.email }}
+    </li>
+  </ul>

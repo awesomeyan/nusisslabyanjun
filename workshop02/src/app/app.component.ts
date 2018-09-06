@@ -19,14 +19,32 @@ export class AppComponent implements OnInit {
   ]
 // addressSvc: AddressService;
 
+
 constructor(private addressSvc: AddressService){
   // this.addressSvc = svc;
 }
+
+addressList = new Array<Address>();
+currentTab = 0;
+
+loadAddressMod(){
+  this.addressSvc.findAddress(this.tabs[this.currentTab].pattern)
+  .then(addr =>{
+    console.log('address: ', addr)
+    this.addressList = addr;
+  })
+  .catch(err =>{
+    console.log('err: ', err);
+  })
+}
+
 processAddress(address: Address){
   console.log('addresses: ', address);
   this.addressSvc.addNewAddress(address)
   .then(result =>{
+    //dynamically generate added 
     console.log("Saved: ", result);
+    this.loadAddressMod();
   })
   .catch(err => {
     console.error('err: ', err);
@@ -34,8 +52,10 @@ processAddress(address: Address){
 }
 
 ngOnInit(){
+  console.log(this.tabs[0].pattern);
   this.addressSvc.findAddress(this.tabs[0].pattern)
   .then(addr =>{
+    this.addressList = addr;
     console.log('address: ', addr)
   })
   .catch(err =>{
@@ -44,15 +64,19 @@ ngOnInit(){
 }
 
 loadAddress(event: MatTabChangeEvent){
+  this.currentTab = event.index;
   console.log('event: ', this.tabs[event.index].pattern);
   const patt = this.tabs[event.index].pattern;
   this.addressSvc.findAddress(patt)
   .then(addr =>{
     console.log('address: ', addr)
+    this.addressList = addr;
   })
   .catch(err =>{
     console.log('err: ', err);
   })
 
 }
+
+
 }

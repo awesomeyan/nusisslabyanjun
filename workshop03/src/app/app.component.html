@@ -1,0 +1,7 @@
+
+<h1>Star Wars</h1>
+<form #peopleForm="ngForm" (ngSubmit)="searchForm()">
+        People ID: <input type="number" name="peopleId" min="1" ngModel required>
+
+    <button type="submit" [disabled]="peopleForm.invalid">Search</button>
+</form>
