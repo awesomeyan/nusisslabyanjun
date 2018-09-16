@@ -1,45 +1,44 @@
-import { Injectable } from "@angular/core";
-import {People} from './model';
-
+import { Injectable } from '@angular/core';
 import Dexie from 'dexie';
+import { People } from './models';
 
 @Injectable()
-export class StarWarsStorageService{
+export class StarWarsDatabaseService {
+
     private db: Dexie;
 
-    constructor(){
-        //Create the database
-        this.db = new Dexie('starwars-storage');
-        //Define the object store's schema
+    constructor() {
+        this.db = new Dexie('swdb');
         this.db.version(1).stores({
-            people:'id,image,name,height,mass,hair_color,skin_color,eye_color,birth_year,gender,homeworld,films,species,vehicles,starships,created,edited,url'
-        });
+            people: "id, image, name, height, mass, hair_color, skin_color, eye_color, birth_year, gender, homeworld, films, species, vehicles, starships, created, edited, url"
+        })
     }
 
-    find(id: number): Promise<People>{
-        const p = new Promise<People>((resolve,reject) =>{
+    getAll(): Promise<People[]> {
+        return (
+            this.db['people'].orderBy('name')
+                .toArray()
+        );
+    }
+
+    find(id: number): Promise<People> {
+        const p = new Promise<People>((resolve, reject) => {
             this.db['people'].where('id').equals(id)
                 .toArray()
-                .then((result: People[]) =>{
-                    if(result.length > 0)
+                .then((result: People[]) => {
+                    if (result.length > 0)
                         resolve(result[0])
-                    else   
+                    else
                         reject(id);
                 })
+
         });
         return (p);
     }
 
-    save(data: People): Promise<number>{
-        return(
-            this.db['people'].put(data)
-        );
-    }
-
-    getAll(): Promise<People[]>{
+    save(data: People): Promise<number> {
         return (
-            this.db['people'].orderBy('name')
-            .toArray()
+            this.db['people'].put(data)
         );
     }
 }

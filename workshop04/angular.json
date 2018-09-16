@@ -22,7 +22,7 @@
               "src/favicon.ico",
               "src/assets",
               "src/images",
-              "src/manifest"
+              "src/manifest.json"
             ],
             "styles": [
               {
@@ -85,9 +85,7 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/images",
-              "src/manifest"
+              "src/assets"
             ]
           }
         },
