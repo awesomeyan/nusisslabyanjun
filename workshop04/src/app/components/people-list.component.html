@@ -1,14 +1,19 @@
-<mat-toolbar color="primary" fxLayout="row column" fxLayoutAlign="space-between center">
+<mat-toolbar color="primary" 
+    fxLayout="row column" fxLayoutAlign="space-between center">
   <span fxLayout="row column" fxLayoutAlign="start center">
-    <img src="../assets/Spongebob-512.png" class="icon">
-  Star Wars
-</span>
-<button type="button" mat-icon-button color="accent" (click)="navigateToAdd()"> 
-  <mat-icon>add_circle</mat-icon>
-</button>
+    <img src="assets/logo.jpg" class="icon">
+    Star Wars
+  </span>
+  <button type="button" mat-icon-button color="accent"
+      (click)="addPeople()">
+    <mat-icon>add_circle</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-nav-list>
   <h2 mat-subheader>Characters</h2>
-    <a mat-list-item [routerLink]="['/detail',p.id]" *ngFor="let p of people" href="#"> {{p.name}} - {{(p.id)}} </a>
+  <a  *ngFor="let p of people"
+      [routerLink]="[ '/detail', p.id ]" mat-list-item>
+      {{ p.name }} ({{ p.id }})
+  </a>
 </mat-nav-list>
