@@ -1,28 +1,27 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
 
-import { People } from './models';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {People} from './model';
 
-const URL = 'https://swapi.co/api/people/';
+const URL = 'https://swapi.co/api/people';
 
 @Injectable()
-export class StarWarsService {
+export class StarWarsService{
+    constructor(private http: HttpClient){
 
-    constructor(private http: HttpClient) { }
+    }
 
-    searchPeople(id: number): Promise<People> {
-        console.log('search people: ', id);
-        //this.http.get(URL + id) //String concatenation
-        //Use string interpolation
+    searchPeople(id: number): Promise<People>{
+        //this.http.get(URL + id) //string concat
         return (
-            this.http.get<People>(`https://swapi.co/api/people/${id}`)
-                .toPromise()
-                //enrich the data then return
-                .then(result => {
-                    result.id = id;
-                    result.image = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`
-                    return (result);
-                })
+        this.http.get<People>(`https://swapi.co/api/people/${id}`) //string interpolation
+            .toPromise()
+            .then(result => {
+                result.id = id;
+                result.image = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`
+                return (result);
+            })
         );
     }
 }
+

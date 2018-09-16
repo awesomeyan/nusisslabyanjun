@@ -1,36 +1,29 @@
-<mat-toolbar color="primary" 
-    fxLayout="row column" fxLayoutAlign="space-between center">
-  <span fxLayout="row column" fxLayoutAlign="start center">
-    <img src="assets/logo.png" class="icon">
+<mat-toolbar color="primary" fxLayout="row column" fxLayoutAlign="space-between center">
+    <span fxLayout="row column" fxLayoutAlign="start center">
+      <img src="../assets/Spongebob-512.png" class="icon">
     Star Wars
   </span>
-  <button type="button" mat-icon-button color="accent"
-      (click)="goBack()">
+  <button type="button" mat-icon-button color="accent" (click)="navigateBack()"> 
     <mat-icon>cancel</mat-icon>
   </button>
-</mat-toolbar>
+  </mat-toolbar>
 
-<form #form="ngForm" (ngSubmit)="save(form)"
-    fxLayout="column row" fxLayoutGap="10px">
-
+<form #form="ngForm" (ngSubmit)="save(form)" fxLayout="column row" fxLayoutGap="10px">
   <mat-form-field>
-    <input type="number" name="peopleId" 
-        placeholder="Enter a number between 1 - 88"
-        min="1" max="88"
-        ngModel matInput required>
-    <mat-hint>Star Wars people id. 
-      See <a href="https://swapi.co" target="_blank">swapi.co</a>
-    </mat-hint>
+      <input type="number" name="peopleId" placeholder="Enter number" ngModel matInput required min="1" max="88">
+
+      <mat-hint>Star Wars people id <a href="https://swapi.co" target="_blank">See Swapi</a></mat-hint>
   </mat-form-field>
 
   <div fxLayout="row column" fxLayoutAlign="end" fxLayoutGap="10px">
-    <button type="reset" mat-raised-button>
-      Clear
-    </button>
-    <button type="submit" mat-raised-button color="warn"
-        [disabled]="form.invalid">
+    <button type="submit" mat-raised-button color="accent" [disabled]="form.invalid" >
       Add
     </button>
+    <button type="reset" mat-raised-button color="warn">
+        Clear
+      </button>
   </div>
 
+
 </form>
+  <br>

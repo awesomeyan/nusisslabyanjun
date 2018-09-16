@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { StarWarsDatabaseService } from '../starwars.storage.service';
-import { People } from '../models';
+import { StarWarsStorageService } from '../starwars.storage.service';
+import { People } from '../model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -16,7 +16,7 @@ export class DetailsComponent implements OnInit {
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private swdbSvc: StarWarsDatabaseService
+    private swdbSvc: StarWarsStorageService
   ) { }
 
   ngOnInit() { 
@@ -43,7 +43,7 @@ export class DetailsComponent implements OnInit {
     navigator['share']({
       title: `Star Wars!`,
       text: `Sharing ${this.people.name} with the world!`,
-      url: 'https://chukmunnlee.github.io/madh5sept'
+      url: ''
     })
   }
 

@@ -1,12 +1,12 @@
 {
   "name": "Star Wars People",
-  "short_name": "Star Wars",
+  "short_name": "StarWars",
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
   "display": "fullscreen",
   "orientation": "portrait",
   "Scope": "/",
-  "start_url": "/madh5sept",
+  "start_url": "/nusisslabyanjun",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
